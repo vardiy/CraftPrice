@@ -1,10 +1,11 @@
 import { useReducer, useEffect, useCallback, useId, useMemo, useRef } from "react";
-import { Plus, Trash2, FileDown, Info } from "lucide-react";
+import { Plus, Trash2, FileDown, Table, Info } from "lucide-react";
 import ResultCard from "./ResultCard";
 import AdSlot from "./AdSlot";
 import { useSettings } from "../context/SettingsContext";
 import { useAnalytics } from "../hooks/useAnalytics";
 import { exportPdf } from "../utils/exportPdf";
+import { exportCsv } from "../utils/exportCsv";
 
 // --- Reducer -----------------------------------------------------------
 
@@ -124,6 +125,11 @@ export default function Calculator({ nicheConfig }) {
       ...results,
     });
     trackEvent("pdf_download", { niche: nicheConfig?.slug ?? "generic" });
+  };
+
+  const handleCsvExport = () => {
+    exportCsv(state.materials, currency.code);
+    trackEvent("csv_download", { niche: nicheConfig?.slug ?? "generic" });
   };
 
   return (
@@ -327,6 +333,20 @@ export default function Calculator({ nicheConfig }) {
           <FileDown className="h-5 w-5" aria-hidden="true" />
           Export PDF
         </button>
+
+        <div className="group relative">
+          <button
+            type="button"
+            onClick={handleCsvExport}
+            className="inline-flex w-full min-h-[44px] items-center justify-center gap-2 rounded-lg border-2 border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 hover:border-slate-400 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+          >
+            <Table className="h-5 w-5" aria-hidden="true" />
+            Bill of Materials
+          </button>
+          <span role="tooltip" className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-2 hidden w-56 -translate-x-1/2 rounded-lg bg-slate-900 px-3 py-2 text-xs text-slate-200 shadow-lg group-hover:block group-focus-within:block">
+            Download a CSV of your materials for tax record-keeping. Hand it to your CPA at year-end.
+          </span>
+        </div>
       </div>
     </div>
   );
