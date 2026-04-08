@@ -1,26 +1,33 @@
-import { useReducer, useEffect, useCallback, useId } from "react";
+import { useReducer, useEffect, useCallback, useId, useMemo } from "react";
 import { Plus, Trash2, FileDown } from "lucide-react";
 import ResultCard from "./ResultCard";
+import AdSlot from "./AdSlot";
+import { useSettings } from "../context/SettingsContext";
 import { exportPdf } from "../utils/exportPdf";
 
 // --- Reducer -----------------------------------------------------------
 
-function newMaterialRow() {
-  return { id: crypto.randomUUID(), name: "", quantity: "", unitCost: "" };
+function newMaterialRow(placeholder) {
+  return { id: crypto.randomUUID(), name: "", quantity: "", unitCost: "", placeholder: placeholder ?? "e.g. Yarn" };
 }
 
-const initialState = {
-  materials: [newMaterialRow()],
-  laborHours: "",
-  hourlyWage: localStorage.getItem("cp_hourlyWage") ?? "",
-  overheadPercent: "10",
-  profitMargin: localStorage.getItem("cp_profitMargin") ?? "50",
-};
+function buildInitialState(nicheConfig) {
+  const savedWage = localStorage.getItem("cp_hourlyWage");
+  const defaultWage = nicheConfig?.defaultHourlyWage;
+
+  return {
+    materials: [newMaterialRow(nicheConfig?.materialPlaceholder)],
+    laborHours: "",
+    hourlyWage: savedWage ?? (defaultWage != null ? String(defaultWage) : ""),
+    overheadPercent: "10",
+    profitMargin: localStorage.getItem("cp_profitMargin") ?? "50",
+  };
+}
 
 function reducer(state, action) {
   switch (action.type) {
     case "ADD_MATERIAL":
-      return { ...state, materials: [...state.materials, newMaterialRow()] };
+      return { ...state, materials: [...state.materials, newMaterialRow(action.placeholder)] };
     case "REMOVE_MATERIAL":
       return {
         ...state,
@@ -70,10 +77,14 @@ const labelClass = "block text-sm font-medium text-slate-700 mb-1";
 
 // --- Component ---------------------------------------------------------
 
-export default function Calculator() {
+export default function Calculator({ nicheConfig }) {
+  const initialState = useMemo(() => buildInitialState(nicheConfig), [nicheConfig]);
   const [state, dispatch] = useReducer(reducer, initialState);
   const uid = useId();
   const results = calculate(state);
+  const { currency } = useSettings();
+
+  const materialPlaceholder = nicheConfig?.materialPlaceholder ?? "e.g. Yarn";
 
   // Persist settings to localStorage
   useEffect(() => {
@@ -96,6 +107,9 @@ export default function Calculator() {
       hourlyWage: num(state.hourlyWage),
       overheadPercent: num(state.overheadPercent),
       profitMargin: num(state.profitMargin),
+      currencySymbol: currency.symbol,
+      currencyCode: currency.code,
+      nicheName: nicheConfig?.name,
       ...results,
     });
   };
@@ -126,7 +140,7 @@ export default function Calculator() {
                   <input
                     id={`${uid}-name-${m.id}`}
                     type="text"
-                    placeholder="e.g. Yarn"
+                    placeholder={m.placeholder}
                     className={inputClass}
                     value={m.name}
                     onChange={(e) =>
@@ -154,7 +168,7 @@ export default function Calculator() {
 
                 <div>
                   <label htmlFor={`${uid}-cost-${m.id}`} className={labelClass}>
-                    Unit $
+                    Unit {currency.symbol}
                   </label>
                   <input
                     id={`${uid}-cost-${m.id}`}
@@ -184,7 +198,7 @@ export default function Calculator() {
 
           <button
             type="button"
-            onClick={() => dispatch({ type: "ADD_MATERIAL" })}
+            onClick={() => dispatch({ type: "ADD_MATERIAL", placeholder: materialPlaceholder })}
             className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
           >
             <Plus className="h-4 w-4" aria-hidden="true" />
@@ -216,7 +230,7 @@ export default function Calculator() {
 
             <div>
               <label htmlFor={`${uid}-wage`} className={labelClass}>
-                Hourly Wage ($)
+                Hourly Wage ({currency.symbol})
               </label>
               <input
                 id={`${uid}-wage`}
@@ -267,6 +281,9 @@ export default function Calculator() {
             />
           </div>
         </section>
+
+        {/* Ad slot above calculate area */}
+        <AdSlot slot="1234567890" />
       </div>
 
       {/* ---- Right Column: Results ---- */}
@@ -277,6 +294,9 @@ export default function Calculator() {
           wholesalePrice={results.wholesalePrice}
           profitMargin={num(state.profitMargin)}
         />
+
+        {/* Ad slot below results */}
+        <AdSlot slot="0987654321" />
 
         <button
           type="button"

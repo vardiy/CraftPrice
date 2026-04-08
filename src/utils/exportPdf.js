@@ -1,17 +1,18 @@
 import jsPDF from "jspdf";
 
-export function exportPdf({ materials, laborHours, hourlyWage, overheadPercent, profitMargin, totalMaterialCost, laborCost, overheadCost, totalCost, retailPrice, wholesalePrice }) {
+export function exportPdf({ materials, laborHours, hourlyWage, overheadPercent, profitMargin, totalMaterialCost, laborCost, overheadCost, totalCost, retailPrice, wholesalePrice, currencySymbol = "$", currencyCode = "USD" }) {
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.getWidth();
+  const s = currencySymbol;
   let y = 20;
 
   doc.setFontSize(20);
-  doc.text("CraftPrice — Cost Summary", pageWidth / 2, y, { align: "center" });
+  doc.text("CraftPrice \u2014 Cost Summary", pageWidth / 2, y, { align: "center" });
   y += 14;
 
   doc.setFontSize(11);
   doc.setTextColor(100);
-  doc.text(`Generated ${new Date().toLocaleDateString()}`, pageWidth / 2, y, { align: "center" });
+  doc.text(`Generated ${new Date().toLocaleDateString()} \u2022 Currency: ${currencyCode}`, pageWidth / 2, y, { align: "center" });
   y += 14;
 
   // Materials table
@@ -37,8 +38,8 @@ export function exportPdf({ materials, laborHours, hourlyWage, overheadPercent, 
     const cost = parseFloat(m.unitCost) || 0;
     doc.text(m.name || "Unnamed", 20, y);
     doc.text(String(qty), 100, y);
-    doc.text(`$${cost.toFixed(2)}`, 130, y);
-    doc.text(`$${(qty * cost).toFixed(2)}`, 165, y);
+    doc.text(`${s}${cost.toFixed(2)}`, 130, y);
+    doc.text(`${s}${(qty * cost).toFixed(2)}`, 165, y);
     y += 7;
   }
 
@@ -55,10 +56,10 @@ export function exportPdf({ materials, laborHours, hourlyWage, overheadPercent, 
   doc.setFontSize(11);
   doc.setTextColor(40);
   const rows = [
-    ["Total Materials", `$${totalMaterialCost.toFixed(2)}`],
-    [`Labor (${laborHours}h × $${hourlyWage}/h)`, `$${laborCost.toFixed(2)}`],
-    [`Overhead (${overheadPercent}%)`, `$${overheadCost.toFixed(2)}`],
-    ["Total Cost", `$${totalCost.toFixed(2)}`],
+    ["Total Materials", `${s}${totalMaterialCost.toFixed(2)}`],
+    [`Labor (${laborHours}h x ${s}${hourlyWage}/h)`, `${s}${laborCost.toFixed(2)}`],
+    [`Overhead (${overheadPercent}%)`, `${s}${overheadCost.toFixed(2)}`],
+    ["Total Cost", `${s}${totalCost.toFixed(2)}`],
   ];
 
   for (const [label, value] of rows) {
@@ -83,9 +84,9 @@ export function exportPdf({ materials, laborHours, hourlyWage, overheadPercent, 
   y += 9;
   doc.setFontSize(16);
   doc.setTextColor(20);
-  doc.text(`Retail Price:  $${retailPrice.toFixed(2)}`, 20, y);
+  doc.text(`Retail Price:  ${s}${retailPrice.toFixed(2)}`, 20, y);
   y += 10;
-  doc.text(`Wholesale Price:  $${wholesalePrice.toFixed(2)}`, 20, y);
+  doc.text(`Wholesale Price:  ${s}${wholesalePrice.toFixed(2)}`, 20, y);
 
   doc.save("craftprice-summary.pdf");
 }
