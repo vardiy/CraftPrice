@@ -5,12 +5,9 @@ import ShareToPinterest from "./ShareToPinterest";
 export default function ResultCard({ totalCost, retailPrice, wholesalePrice, profitMargin, nicheConfig }) {
   const { formatPrice } = useSettings();
 
-  const pinUrl = nicheConfig
-    ? `https://makermarginsapp.com/calc/${nicheConfig.slug}`
-    : "https://makermarginsapp.com/";
   const pinDescription = nicheConfig
-    ? `${nicheConfig.name} Profit Calculator — find your perfect retail and wholesale prices with MakerMargins`
-    : "Craft Profit Calculator — find your perfect retail and wholesale prices with MakerMargins";
+    ? `${nicheConfig.name} Profit Calculator \u2014 find your perfect retail and wholesale prices with MakerMargins`
+    : "Craft Profit Calculator \u2014 find your perfect retail and wholesale prices with MakerMargins";
 
   return (
     <section aria-label="Pricing results" className="rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 p-6 text-white shadow-lg">
@@ -54,7 +51,7 @@ export default function ResultCard({ totalCost, retailPrice, wholesalePrice, pro
       </div>
 
       <div className="mt-5">
-        <ShareToPinterest url={pinUrl} description={pinDescription} />
+        <ShareToPinterest nicheSlug={nicheConfig?.slug} description={pinDescription} />
       </div>
     </section>
   );

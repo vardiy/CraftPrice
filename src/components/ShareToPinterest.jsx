@@ -9,8 +9,16 @@ const PIN_SVG = (
   </svg>
 );
 
-export default function ShareToPinterest({ url, imageUrl, description }) {
-  const pinUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&media=${encodeURIComponent(imageUrl || "")}&description=${encodeURIComponent(description || "")}`;
+export default function ShareToPinterest({ nicheSlug, description }) {
+  const origin = typeof window !== "undefined" ? window.location.origin : "https://makermarginsapp.com";
+  const pageUrl = nicheSlug
+    ? `${origin}/calc/${nicheSlug}`
+    : `${origin}/`;
+  const imageUrl = nicheSlug
+    ? `${origin}/assets/pins/${nicheSlug}.png`
+    : `${origin}/assets/pins/home-preview.png`;
+
+  const pinUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(pageUrl)}&media=${encodeURIComponent(imageUrl)}&description=${encodeURIComponent(description || "")}`;
 
   return (
     <a
@@ -18,7 +26,7 @@ export default function ShareToPinterest({ url, imageUrl, description }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Save this calculation to Pinterest"
-      className="flex w-full min-h-[44px] items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-4 py-2.5 text-sm font-medium text-white hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+      className="flex w-full min-h-[44px] items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
     >
       {PIN_SVG}
       Save to Pinterest
