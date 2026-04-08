@@ -1,5 +1,5 @@
 import { useReducer, useEffect, useCallback, useId, useMemo, useRef } from "react";
-import { Plus, Trash2, FileDown } from "lucide-react";
+import { Plus, Trash2, FileDown, Info } from "lucide-react";
 import ResultCard from "./ResultCard";
 import AdSlot from "./AdSlot";
 import { useSettings } from "../context/SettingsContext";
@@ -179,9 +179,17 @@ export default function Calculator({ nicheConfig }) {
                 </div>
 
                 <div>
-                  <label htmlFor={`${uid}-cost-${m.id}`} className={labelClass}>
-                    Unit {currency.symbol}
-                  </label>
+                  <span className="flex items-center gap-1 mb-1">
+                    <label htmlFor={`${uid}-cost-${m.id}`} className="block text-sm font-medium text-slate-700">
+                      Unit {currency.symbol}
+                    </label>
+                    <span className="group relative">
+                      <Info className="h-3.5 w-3.5 text-slate-400" aria-hidden="true" />
+                      <span role="tooltip" className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1.5 hidden w-48 -translate-x-1/2 rounded-lg bg-slate-900 px-3 py-2 text-xs text-slate-200 shadow-lg group-hover:block group-focus-within:block">
+                        Reminder: These costs are generally tax-deductible business expenses.
+                      </span>
+                    </span>
+                  </span>
                   <input
                     id={`${uid}-cost-${m.id}`}
                     type="text"

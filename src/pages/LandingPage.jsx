@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowDown, ChevronDown, Package, Clock, Building2, TrendingUp } from "lucide-react";
+import { ArrowDown, ChevronDown, Package, Clock, Building2, TrendingUp, DollarSign, Receipt } from "lucide-react";
 import SeoHead from "../components/SeoHead";
 import { NICHES } from "../config/nicheConfig";
 
@@ -161,6 +161,77 @@ export default function LandingPage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* ---- Labor Rate Guide ---- */}
+      <section aria-labelledby="labor-heading" className="py-12">
+        <h2
+          id="labor-heading"
+          className="mb-8 text-center text-2xl font-bold tracking-tight text-slate-900"
+        >
+          What Is Your Time Worth?
+        </h2>
+
+        <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50">
+                <th scope="col" className="px-4 py-3 font-semibold text-slate-900 sm:px-6">Tier</th>
+                <th scope="col" className="px-4 py-3 font-semibold text-slate-900 sm:px-6">Rate</th>
+                <th scope="col" className="px-4 py-3 font-semibold text-slate-900 sm:px-6">Who</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              <tr>
+                <td className="px-4 py-3 font-medium text-slate-900 sm:px-6">Hobbyist</td>
+                <td className="px-4 py-3 tabular-nums text-slate-700 sm:px-6">$15&ndash;$20/hr</td>
+                <td className="px-4 py-3 text-slate-500 sm:px-6">Learning the craft and building speed.</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 font-medium text-slate-900 sm:px-6">Artisan</td>
+                <td className="px-4 py-3 tabular-nums text-slate-700 sm:px-6">$25&ndash;$40/hr</td>
+                <td className="px-4 py-3 text-slate-500 sm:px-6">Consistent quality and efficient production.</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-3 font-medium text-slate-900 sm:px-6">Specialist</td>
+                <td className="px-4 py-3 tabular-nums text-slate-700 sm:px-6">$50+/hr</td>
+                <td className="px-4 py-3 text-slate-500 sm:px-6">High demand, rare skills, or custom design work.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div className="mx-auto mt-6 flex max-w-3xl items-start gap-3 rounded-xl border border-blue-200 bg-blue-50 p-4">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-600" aria-hidden="true">
+            <DollarSign className="h-5 w-5" />
+          </span>
+          <div>
+            <h3 className="font-semibold text-slate-900">The Minimum Wage + 25% Rule</h3>
+            <p className="mt-1 text-sm text-slate-600">
+              At a minimum, pay yourself your local minimum wage <strong>plus 25%</strong>. The extra quarter covers self-employment taxes (Social Security + Medicare) that you owe as a sole proprietor. If minimum wage is $15/hr, start at $18.75/hr &mdash; then work up from there.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ---- Tax Deduction Callout ---- */}
+      <section aria-labelledby="tax-heading" className="py-12">
+        <div className="mx-auto max-w-3xl rounded-2xl border-2 border-slate-900 bg-slate-900 p-6 text-white shadow-lg">
+          <div className="flex items-start gap-4">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/15" aria-hidden="true">
+              <Receipt className="h-6 w-6" />
+            </span>
+            <div>
+              <h2 id="tax-heading" className="text-lg font-bold">Tax Tip: Materials Are Deductions</h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                Every material you track in MakerMargins &mdash; yarn, lumber, beads, flour, fabric &mdash; is a <strong className="text-white">business expense</strong> that reduces your taxable income. Keep your receipts, log your costs here, and export the PDF as a record for tax season.
+              </p>
+              <p className="mt-3 text-xs text-slate-400">
+                This is educational content for informational purposes only and does not constitute professional tax, legal, or financial advice. Consult a qualified tax professional for guidance specific to your situation.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
