@@ -305,6 +305,7 @@ export default function Calculator({ nicheConfig }) {
           retailPrice={results.retailPrice === Infinity ? 0 : results.retailPrice}
           wholesalePrice={results.wholesalePrice}
           profitMargin={num(state.profitMargin)}
+          nicheConfig={nicheConfig}
         />
 
         {/* Ad slot below results */}

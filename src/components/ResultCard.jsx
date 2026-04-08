@@ -1,8 +1,16 @@
 import { DollarSign, TrendingUp, Package } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
+import ShareToPinterest from "./ShareToPinterest";
 
-export default function ResultCard({ totalCost, retailPrice, wholesalePrice, profitMargin }) {
+export default function ResultCard({ totalCost, retailPrice, wholesalePrice, profitMargin, nicheConfig }) {
   const { formatPrice } = useSettings();
+
+  const pinUrl = nicheConfig
+    ? `https://makermarginsapp.com/calc/${nicheConfig.slug}`
+    : "https://makermarginsapp.com/";
+  const pinDescription = nicheConfig
+    ? `${nicheConfig.name} Profit Calculator — find your perfect retail and wholesale prices with MakerMargins`
+    : "Craft Profit Calculator — find your perfect retail and wholesale prices with MakerMargins";
 
   return (
     <section aria-label="Pricing results" className="rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 p-6 text-white shadow-lg">
@@ -43,6 +51,10 @@ export default function ResultCard({ totalCost, retailPrice, wholesalePrice, pro
             <p className="truncate text-xl font-bold tabular-nums">{formatPrice(wholesalePrice)}</p>
           </div>
         </div>
+      </div>
+
+      <div className="mt-5">
+        <ShareToPinterest url={pinUrl} description={pinDescription} />
       </div>
     </section>
   );
