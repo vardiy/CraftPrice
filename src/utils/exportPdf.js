@@ -7,7 +7,7 @@ export function exportPdf({ materials, laborHours, hourlyWage, overheadPercent, 
   let y = 20;
 
   doc.setFontSize(20);
-  doc.text("CraftPrice \u2014 Cost Summary", pageWidth / 2, y, { align: "center" });
+  doc.text("MakerMargins \u2014 Cost Summary", pageWidth / 2, y, { align: "center" });
   y += 14;
 
   doc.setFontSize(11);
@@ -88,5 +88,5 @@ export function exportPdf({ materials, laborHours, hourlyWage, overheadPercent, 
   y += 10;
   doc.text(`Wholesale Price:  ${s}${wholesalePrice.toFixed(2)}`, 20, y);
 
-  doc.save("craftprice-summary.pdf");
+  doc.save("makermargins-summary.pdf");
 }

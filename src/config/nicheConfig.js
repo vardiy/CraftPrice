@@ -5,7 +5,7 @@ export const NICHES = {
     slug: "crochet",
     name: "Crochet",
     h1: "Crochet Profit Calculator",
-    metaTitle: "CraftPrice | Crochet Profit Calculator",
+    metaTitle: "MakerMargins | Crochet Profit Calculator",
     metaDescription:
       "Calculate the true cost of your crochet projects. Track yarn, hooks, and notions, add labor time, and find the perfect retail and wholesale price.",
     defaultHourlyWage: 15,
@@ -17,7 +17,7 @@ export const NICHES = {
     slug: "woodworking",
     name: "Woodworking",
     h1: "Woodworking Profit Calculator",
-    metaTitle: "CraftPrice | Woodworking Profit Calculator",
+    metaTitle: "MakerMargins | Woodworking Profit Calculator",
     metaDescription:
       "Price your woodworking projects accurately. Track lumber, hardware, and finish costs, factor in shop time, and set profitable retail and wholesale prices.",
     defaultHourlyWage: 25,
@@ -29,7 +29,7 @@ export const NICHES = {
     slug: "jewelry",
     name: "Jewelry",
     h1: "Jewelry Profit Calculator",
-    metaTitle: "CraftPrice | Jewelry Profit Calculator",
+    metaTitle: "MakerMargins | Jewelry Profit Calculator",
     metaDescription:
       "Price handmade jewelry for profit. Track beads, wire, and findings, add bench time, and calculate retail and wholesale prices instantly.",
     defaultHourlyWage: 20,
@@ -41,7 +41,7 @@ export const NICHES = {
     slug: "baking",
     name: "Baking",
     h1: "Baking Profit Calculator",
-    metaTitle: "CraftPrice | Baking Profit Calculator",
+    metaTitle: "MakerMargins | Baking Profit Calculator",
     metaDescription:
       "Find the right price for your baked goods. Track ingredients and packaging costs, add prep and bake time, and calculate profitable selling prices.",
     defaultHourlyWage: 18,
@@ -53,7 +53,7 @@ export const NICHES = {
     slug: "sewing",
     name: "Sewing",
     h1: "Sewing Profit Calculator",
-    metaTitle: "CraftPrice | Sewing Profit Calculator",
+    metaTitle: "MakerMargins | Sewing Profit Calculator",
     metaDescription:
       "Calculate sewing project costs and pricing. Track fabric, thread, and notions, factor in cutting and sewing time, and set retail and wholesale prices.",
     defaultHourlyWage: 20,

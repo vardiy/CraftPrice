@@ -10,7 +10,7 @@ const FAQ_ITEMS = [
   {
     question: "How do I calculate labor cost for handmade products?",
     answer:
-      "Multiply the total hours you spend making the product by your desired hourly wage. Include every phase \u2014 design, cutting, assembly, finishing, and packaging. CraftPrice does this math for you automatically.",
+      "Multiply the total hours you spend making the product by your desired hourly wage. Include every phase \u2014 design, cutting, assembly, finishing, and packaging. MakerMargins does this math for you automatically.",
   },
   {
     question: "What profit margin should I use for handmade goods?",
@@ -82,7 +82,7 @@ export default function LandingPage() {
           <span className="text-blue-600">Profitably.</span>
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-          CraftPrice is a free calculator that turns material costs, labor hours,
+          MakerMargins is a free calculator that turns material costs, labor hours,
           and overhead into retail and wholesale prices you can trust.
         </p>
         <button

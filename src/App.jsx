@@ -19,7 +19,7 @@ function App() {
               <Scissors className="h-5 w-5" />
             </span>
             <span className="text-xl font-bold tracking-tight text-slate-900">
-              CraftPrice
+              MakerMargins
             </span>
           </Link>
 
@@ -48,7 +48,7 @@ function App() {
       </main>
 
       <footer className="border-t border-slate-200 bg-white py-4 text-center text-sm text-slate-500">
-        <p>&copy; {new Date().getFullYear()} CraftPrice. Built for makers.</p>
+        <p>&copy; {new Date().getFullYear()} MakerMargins. Built for makers.</p>
       </footer>
 
       <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} />

@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet-async";
 
 const GENERIC = {
-  title: "CraftPrice | Crochet & Craft Profit Calculator",
+  title: "MakerMargins | Crochet & Craft Profit Calculator",
   description:
     "Free pricing calculator for makers. Track materials, labor, and overhead to find your perfect retail and wholesale prices. Export results as PDF.",
-  canonical: "https://craftprice.app/",
-  jsonLdName: "CraftPrice",
+  canonical: "https://makermarginsapp.com/",
+  jsonLdName: "MakerMargins",
   jsonLdDescription:
     "Free profit calculator for crochet, knitting, woodworking, and craft makers. Calculate retail and wholesale prices with material tracking, labor costs, and PDF export.",
 };
@@ -14,10 +14,10 @@ export default function SeoHead({ niche }) {
   const title = niche?.metaTitle ?? GENERIC.title;
   const description = niche?.metaDescription ?? GENERIC.description;
   const canonical = niche
-    ? `https://craftprice.app/calc/${niche.slug}`
+    ? `https://makermarginsapp.com/calc/${niche.slug}`
     : GENERIC.canonical;
   const jsonLdName = niche
-    ? `CraftPrice \u2014 ${niche.name} Calculator`
+    ? `MakerMargins \u2014 ${niche.name} Calculator`
     : GENERIC.jsonLdName;
   const jsonLdDescription = niche?.metaDescription ?? GENERIC.jsonLdDescription;
 
