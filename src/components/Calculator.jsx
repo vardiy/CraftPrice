@@ -1,8 +1,9 @@
-import { useReducer, useEffect, useCallback, useId, useMemo } from "react";
+import { useReducer, useEffect, useCallback, useId, useMemo, useRef } from "react";
 import { Plus, Trash2, FileDown } from "lucide-react";
 import ResultCard from "./ResultCard";
 import AdSlot from "./AdSlot";
 import { useSettings } from "../context/SettingsContext";
+import { useAnalytics } from "../hooks/useAnalytics";
 import { exportPdf } from "../utils/exportPdf";
 
 // --- Reducer -----------------------------------------------------------
@@ -83,8 +84,18 @@ export default function Calculator({ nicheConfig }) {
   const uid = useId();
   const results = calculate(state);
   const { currency } = useSettings();
+  const { trackEvent } = useAnalytics();
 
   const materialPlaceholder = nicheConfig?.materialPlaceholder ?? "e.g. Yarn";
+
+  // Track calculate event when user produces a non-zero result
+  const calcFired = useRef(false);
+  useEffect(() => {
+    if (results.totalCost > 0 && !calcFired.current) {
+      calcFired.current = true;
+      trackEvent("calculate", { niche: nicheConfig?.slug ?? "generic" });
+    }
+  }, [results.totalCost, trackEvent, nicheConfig]);
 
   // Persist settings to localStorage
   useEffect(() => {
@@ -112,6 +123,7 @@ export default function Calculator({ nicheConfig }) {
       nicheName: nicheConfig?.name,
       ...results,
     });
+    trackEvent("pdf_download", { niche: nicheConfig?.slug ?? "generic" });
   };
 
   return (

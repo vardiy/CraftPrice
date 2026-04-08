@@ -1,10 +1,23 @@
-import { useState } from "react";
-import { Routes, Route, Navigate, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 import { Scissors, Settings } from "lucide-react";
 import SettingsModal from "./components/SettingsModal";
+import ConsentBanner from "./components/ConsentBanner";
 import LandingPage from "./pages/LandingPage";
 import NicheCalculatorPage from "./pages/NicheCalculatorPage";
 import { useSettings } from "./context/SettingsContext";
+import { initAnalytics, trackPageView } from "./hooks/useAnalytics";
+
+// Initialize GA4 on app load (consent defaults to denied)
+initAnalytics();
+
+function PageTracker() {
+  const location = useLocation();
+  useEffect(() => {
+    trackPageView(location.pathname);
+  }, [location.pathname]);
+  return null;
+}
 
 function App() {
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -12,6 +25,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <PageTracker />
+
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-5xl items-center gap-3 px-4 py-4">
           <Link to="/" className="flex items-center gap-3 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
@@ -52,6 +67,7 @@ function App() {
       </footer>
 
       <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} />
+      <ConsentBanner />
     </div>
   );
 }
