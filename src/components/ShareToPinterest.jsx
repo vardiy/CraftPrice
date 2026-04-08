@@ -18,7 +18,7 @@ export default function ShareToPinterest({ url, imageUrl, description }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Save this calculation to Pinterest"
-      className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg bg-[#E60023] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#AD081B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+      className="flex w-full min-h-[44px] items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-4 py-2.5 text-sm font-medium text-white hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
     >
       {PIN_SVG}
       Save to Pinterest
