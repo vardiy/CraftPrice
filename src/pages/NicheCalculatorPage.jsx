@@ -4,6 +4,7 @@ import { ArrowRight, AlertTriangle, Calculator as CalcIcon, BookOpen, Clock } fr
 import { getNiche, NICHES } from "../config/nicheConfig";
 import { NICHE_CONTENT } from "../config/nicheContent";
 import { getArticlesByNiche } from "../content/articles";
+import { useAnalytics } from "../hooks/useAnalytics";
 import Calculator from "../components/Calculator";
 import SeoHead from "../components/SeoHead";
 import PinterestMeta from "../components/PinterestMeta";
@@ -11,6 +12,7 @@ import PinterestMeta from "../components/PinterestMeta";
 export default function NicheCalculatorPage() {
   const { niche: slug } = useParams();
   const niche = getNiche(slug);
+  const { trackEvent } = useAnalytics();
 
   if (!niche) return <Navigate to="/" replace />;
 
@@ -140,6 +142,7 @@ export default function NicheCalculatorPage() {
                   <Link
                     key={a.slug}
                     to={`/learn/${a.slug}`}
+                    onClick={() => trackEvent("niche_to_article_click", { niche: slug, article: a.slug })}
                     className="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                   >
                     <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-600" aria-hidden="true">
@@ -169,6 +172,7 @@ export default function NicheCalculatorPage() {
                   <Link
                     key={other.slug}
                     to={`/calc/${other.slug}`}
+                    onClick={() => trackEvent("niche_to_niche_click", { from: slug, to: other.slug })}
                     className="group flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                   >
                     <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white" aria-hidden="true">

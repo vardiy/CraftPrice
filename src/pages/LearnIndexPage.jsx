@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Clock, ChevronRight } from "lucide-react";
 import { ARTICLES } from "../content/articles";
 import { NICHES } from "../config/nicheConfig";
+import { useAnalytics } from "../hooks/useAnalytics";
 
 const SITE_ORIGIN = "https://makermarginsapp.com";
 const PAGE_TITLE = "Pricing Guides for Makers — Real Numbers, Not Guesses | MakerMargins";
@@ -10,6 +11,7 @@ const PAGE_DESCRIPTION =
   "In-depth pricing guides for handmade makers: amigurumi, cutting boards, sterling jewelry, custom cakes, quilts, and more. Real cost breakdowns and worked examples.";
 
 export default function LearnIndexPage() {
+  const { trackEvent } = useAnalytics();
   const niches = Object.values(NICHES);
   const articlesByNiche = niches.map((n) => ({
     niche: n,
@@ -73,6 +75,7 @@ export default function LearnIndexPage() {
               </h2>
               <Link
                 to={`/calc/${niche.slug}`}
+                onClick={() => trackEvent("learn_index_calc_click", { niche: niche.slug })}
                 className="ml-auto text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline"
               >
                 Calculator →
@@ -83,6 +86,7 @@ export default function LearnIndexPage() {
                 <Link
                   key={a.slug}
                   to={`/learn/${a.slug}`}
+                  onClick={() => trackEvent("learn_index_article_click", { article: a.slug, niche: niche.slug })}
                   className="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                 >
                   <h3 className="text-lg font-semibold text-slate-900 group-hover:text-blue-700">

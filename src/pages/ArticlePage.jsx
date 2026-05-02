@@ -3,12 +3,14 @@ import { Helmet } from "react-helmet-async";
 import { Clock, ArrowRight, ChevronRight } from "lucide-react";
 import { getArticle, getArticlesByNiche } from "../content/articles";
 import { getNiche } from "../config/nicheConfig";
+import { useAnalytics } from "../hooks/useAnalytics";
 
 const SITE_ORIGIN = "https://makermarginsapp.com";
 
 export default function ArticlePage() {
   const { slug } = useParams();
   const article = getArticle(slug);
+  const { trackEvent } = useAnalytics();
 
   if (!article) return <Navigate to="/learn" replace />;
 
@@ -92,6 +94,7 @@ export default function ArticlePage() {
             {niche && (
               <Link
                 to={`/calc/${niche.slug}`}
+                onClick={() => trackEvent("article_niche_tag_click", { article: article.slug, niche: niche.slug })}
                 className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 hover:bg-blue-100"
               >
                 {niche.name}
@@ -183,6 +186,7 @@ export default function ArticlePage() {
             </p>
             <Link
               to={article.ctaHref}
+              onClick={() => trackEvent("article_cta_click", { article: article.slug, niche: article.niche })}
               className="mt-4 inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               Open the calculator
@@ -201,6 +205,7 @@ export default function ArticlePage() {
                 <Link
                   key={r.slug}
                   to={`/learn/${r.slug}`}
+                  onClick={() => trackEvent("related_article_click", { from: article.slug, to: r.slug, niche: article.niche })}
                   className="group flex flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                 >
                   <h3 className="text-base font-semibold text-slate-900 group-hover:text-blue-700">
