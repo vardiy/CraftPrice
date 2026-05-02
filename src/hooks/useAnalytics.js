@@ -7,6 +7,7 @@ const CONSENT_KEY = "mm_analytics_consent";
 // --- Consent Mode v2 helpers -------------------------------------------
 
 function getConsent() {
+  if (typeof window === "undefined") return null;
   return localStorage.getItem(CONSENT_KEY); // "granted" | "denied" | null
 }
 
@@ -50,11 +51,13 @@ export function initAnalytics() {
 // --- Consent actions ---------------------------------------------------
 
 export function acceptConsent() {
+  if (typeof window === "undefined") return;
   localStorage.setItem(CONSENT_KEY, "granted");
   pushConsent("granted");
 }
 
 export function declineConsent() {
+  if (typeof window === "undefined") return;
   localStorage.setItem(CONSENT_KEY, "denied");
   pushConsent("denied");
 }

@@ -1,25 +1,23 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
+import { Outlet, Navigate, Link, useLocation } from "react-router-dom";
 import { Scissors, Settings } from "lucide-react";
 import SettingsModal from "./components/SettingsModal";
 import ConsentBanner from "./components/ConsentBanner";
 import LandingPage from "./pages/LandingPage";
 import NicheCalculatorPage from "./pages/NicheCalculatorPage";
-import { useSettings } from "./context/SettingsContext";
+import { SettingsProvider, useSettings } from "./context/SettingsContext";
 import { initAnalytics, trackPageView } from "./hooks/useAnalytics";
-
-// Initialize GA4 on app load (consent defaults to denied)
-initAnalytics();
 
 function PageTracker() {
   const location = useLocation();
   useEffect(() => {
+    initAnalytics();
     trackPageView(location.pathname);
   }, [location.pathname]);
   return null;
 }
 
-function App() {
+function Shell() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const { currency } = useSettings();
 
@@ -55,11 +53,7 @@ function App() {
       </header>
 
       <main className="mx-auto max-w-5xl px-4 py-8">
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/calc/:niche" element={<NicheCalculatorPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <Outlet />
       </main>
 
       <footer className="border-t border-slate-200 bg-white py-4 text-center text-sm text-slate-500">
@@ -72,4 +66,22 @@ function App() {
   );
 }
 
-export default App;
+function Layout() {
+  return (
+    <SettingsProvider>
+      <Shell />
+    </SettingsProvider>
+  );
+}
+
+export const routes = [
+  {
+    path: "/",
+    Component: Layout,
+    children: [
+      { index: true, Component: LandingPage },
+      { path: "calc/:niche", Component: NicheCalculatorPage },
+      { path: "*", element: <Navigate to="/" replace /> },
+    ],
+  },
+];

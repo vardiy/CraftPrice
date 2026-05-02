@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { acceptConsent, declineConsent, hasRespondedToConsent } from "../hooks/useAnalytics";
 
 export default function ConsentBanner() {
-  const [visible, setVisible] = useState(() => !hasRespondedToConsent());
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (!hasRespondedToConsent()) setVisible(true);
+  }, []);
 
   if (!visible) return null;
 

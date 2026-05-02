@@ -9,12 +9,21 @@ import { exportCsv } from "../utils/exportCsv";
 
 // --- Reducer -----------------------------------------------------------
 
+const isBrowser = typeof window !== "undefined";
+
+function newId() {
+  return isBrowser && typeof crypto !== "undefined" && crypto.randomUUID
+    ? crypto.randomUUID()
+    : `m-${Math.random().toString(36).slice(2, 11)}`;
+}
+
 function newMaterialRow(placeholder) {
-  return { id: crypto.randomUUID(), name: "", quantity: "", unitCost: "", placeholder: placeholder ?? "e.g. Yarn" };
+  return { id: newId(), name: "", quantity: "", unitCost: "", placeholder: placeholder ?? "e.g. Yarn" };
 }
 
 function buildInitialState(nicheConfig) {
-  const savedWage = localStorage.getItem("cp_hourlyWage");
+  const savedWage = isBrowser ? localStorage.getItem("cp_hourlyWage") : null;
+  const savedMargin = isBrowser ? localStorage.getItem("cp_profitMargin") : null;
   const defaultWage = nicheConfig?.defaultHourlyWage;
 
   return {
@@ -22,7 +31,7 @@ function buildInitialState(nicheConfig) {
     laborHours: "",
     hourlyWage: savedWage ?? (defaultWage != null ? String(defaultWage) : ""),
     overheadPercent: "10",
-    profitMargin: localStorage.getItem("cp_profitMargin") ?? "50",
+    profitMargin: savedMargin ?? "50",
   };
 }
 
@@ -100,11 +109,11 @@ export default function Calculator({ nicheConfig }) {
 
   // Persist settings to localStorage
   useEffect(() => {
-    localStorage.setItem("cp_hourlyWage", state.hourlyWage);
+    if (isBrowser) localStorage.setItem("cp_hourlyWage", state.hourlyWage);
   }, [state.hourlyWage]);
 
   useEffect(() => {
-    localStorage.setItem("cp_profitMargin", state.profitMargin);
+    if (isBrowser) localStorage.setItem("cp_profitMargin", state.profitMargin);
   }, [state.profitMargin]);
 
   const setField = useCallback(

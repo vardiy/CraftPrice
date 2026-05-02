@@ -9,6 +9,7 @@ const CURRENCIES = [
 const STORAGE_KEY = "cp_currency";
 
 function loadCurrency() {
+  if (typeof window === "undefined") return CURRENCIES[0];
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
     if (saved?.code && saved?.symbol) return saved;
@@ -24,8 +25,9 @@ export function SettingsProvider({ children }) {
 
   const setCurrency = useCallback((next) => {
     setCurrencyState(next);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-    // Announce to screen readers
+    if (typeof window !== "undefined") {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    }
     if (announcementRef.current) {
       announcementRef.current.textContent = `Currency changed to ${next.code}`;
     }
