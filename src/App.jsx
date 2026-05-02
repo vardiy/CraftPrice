@@ -5,6 +5,8 @@ import SettingsModal from "./components/SettingsModal";
 import ConsentBanner from "./components/ConsentBanner";
 import LandingPage from "./pages/LandingPage";
 import NicheCalculatorPage from "./pages/NicheCalculatorPage";
+import LearnIndexPage from "./pages/LearnIndexPage";
+import ArticlePage from "./pages/ArticlePage";
 import { SettingsProvider, useSettings } from "./context/SettingsContext";
 import { initAnalytics, trackPageView } from "./hooks/useAnalytics";
 
@@ -81,6 +83,8 @@ export const routes = [
     children: [
       { index: true, Component: LandingPage },
       { path: "calc/:niche", Component: NicheCalculatorPage },
+      { path: "learn", Component: LearnIndexPage },
+      { path: "learn/:slug", Component: ArticlePage },
       { path: "*", element: <Navigate to="/" replace /> },
     ],
   },

@@ -1,8 +1,9 @@
 import { useParams, Navigate, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, AlertTriangle, Calculator as CalcIcon } from "lucide-react";
+import { ArrowRight, AlertTriangle, Calculator as CalcIcon, BookOpen, Clock } from "lucide-react";
 import { getNiche, NICHES } from "../config/nicheConfig";
 import { NICHE_CONTENT } from "../config/nicheContent";
+import { getArticlesByNiche } from "../content/articles";
 import Calculator from "../components/Calculator";
 import SeoHead from "../components/SeoHead";
 import PinterestMeta from "../components/PinterestMeta";
@@ -15,6 +16,7 @@ export default function NicheCalculatorPage() {
 
   const content = NICHE_CONTENT[slug];
   const otherNiches = Object.values(NICHES).filter((n) => n.slug !== slug);
+  const nicheArticles = getArticlesByNiche(slug);
 
   const faqJsonLd = content && {
     "@context": "https://schema.org",
@@ -127,6 +129,33 @@ export default function NicheCalculatorPage() {
               ))}
             </div>
           </section>
+
+          {nicheArticles.length > 0 && (
+            <section aria-labelledby={`${slug}-articles`}>
+              <h2 id={`${slug}-articles`} className="mb-4 text-2xl font-bold tracking-tight text-slate-900">
+                Pricing guides for {niche.name.toLowerCase()} makers
+              </h2>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {nicheArticles.map((a) => (
+                  <Link
+                    key={a.slug}
+                    to={`/learn/${a.slug}`}
+                    className="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                  >
+                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-blue-600" aria-hidden="true">
+                      <BookOpen className="h-5 w-5" />
+                    </span>
+                    <h3 className="text-base font-semibold text-slate-900 group-hover:text-blue-700">{a.title}</h3>
+                    <p className="text-sm leading-relaxed text-slate-600">{a.excerpt}</p>
+                    <span className="mt-auto flex items-center gap-1 text-xs text-slate-400">
+                      <Clock className="h-3.5 w-3.5" aria-hidden="true" />
+                      {a.readingMinutes} min read
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Internal links to other niches */}
           <section aria-labelledby={`${slug}-other`}>
