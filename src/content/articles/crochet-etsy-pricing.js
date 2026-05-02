@@ -1,0 +1,115 @@
+export default {
+  slug: "crochet-etsy-pricing",
+  niche: "crochet",
+  title: "Selling Crochet on Etsy: Pricing for Fees, Shipping, and Margin",
+  metaTitle: "How to Price Crochet on Etsy (2026 Fee + Margin Guide)",
+  metaDescription:
+    "Etsy fees eat 20-30% of every crochet sale. Here's how to price for transaction fees, payment processing, ads, and shipping while keeping margin.",
+  publishDate: "2026-05-02",
+  lastUpdated: "2026-05-02",
+  readingMinutes: 9,
+  excerpt:
+    "Etsy fees can quietly eat 25% of your crochet sale price. Here's the real fee breakdown, shipping math, and how to price so you actually keep money.",
+  intro: [
+    "A $40 crochet beanie sells on Etsy. Sounds like $40 in your pocket. After fees, shipping costs, and payment processing, you net $24–$28. If your materials and time cost $20, you made $4–$8 — for what was probably 4 hours of work plus packing and shipping.",
+    "Etsy is a viable sales channel for crochet, but only if you price for the fees instead of pretending they don't exist. Most makers price by gut, watch the deposits hit their bank account, and slowly realize the business is breaking even at best.",
+    "This guide breaks down every Etsy fee, shows you what they add up to as a percentage of sale, and gives you a pricing formula that lands at real margin instead of fake margin.",
+  ],
+  sections: [
+    {
+      heading: "What Etsy actually takes",
+      paragraphs: [
+        "Etsy's fee stack as of 2026 has six layers, plus shipping costs that often come out of your pocket:",
+        "**Listing fee**: $0.20 per listing. Renews every 4 months or when sold. For a 100-listing shop with monthly turnover, this is $20–$40/month overhead.",
+        "**Transaction fee**: 6.5% of the item price including shipping. On a $40 item with $8 shipping, that's $3.12.",
+        "**Payment processing**: ~3% + $0.25 per transaction (varies slightly by country). On a $48 transaction (item + shipping), that's $1.69.",
+        "**Etsy Ads (optional)**: variable, but if you opt in, expect 3–8% of sales going to ad spend. Shops using Etsy Ads typically pay 5–8% of revenue back to the platform.",
+        "**Offsite Ads (mandatory if you exceed $10K/year, optional below)**: 12–15% of sales attributed to offsite ads. This one stings — Etsy decides which sales are 'attributed' and the cut is large.",
+        "**Currency conversion (international sales)**: 2.5% if Etsy converts to your home currency.",
+        "**Shipping (your cost)**: USPS first-class for a 1-pound padded mailer is $5–$8 in 2026; priority is $9–$14. If you charge the customer the actual shipping cost, this washes out — but most makers slightly under-charge to avoid sticker shock, eating $1–$3 per order.",
+      ],
+    },
+    {
+      heading: "What this looks like on a real sale",
+      paragraphs: [
+        "**Sale: $40 beanie + $8 shipping = $48 total**",
+        "- Etsy listing fee: $0.20",
+        "- Transaction fee (6.5% of $48): $3.12",
+        "- Payment processing (3% + $0.25 of $48): $1.69",
+        "- Etsy Ads (5% of $40 item): $2.00",
+        "- Actual shipping cost (assume $7 priority for a beanie): $7.00",
+        "- **Total Etsy + shipping cost: $14.01**",
+        "- **Your gross**: $48 - $14.01 = $33.99",
+        "- **As % of item price** ($40): you net 85% of the item price, or 71% of the gross transaction.",
+        "Now subtract materials and time. If the beanie used $5 in yarn and 4 hours of labor, your effective hourly rate is ($33.99 - $5) ÷ 4 = $7.25/hr. That's the math.",
+      ],
+    },
+    {
+      heading: "How to price for Etsy",
+      paragraphs: [
+        "Use this formula to back into your Etsy listing price:",
+        "**Step 1**: Calculate your true cost using the MakerMargins calculator (yarn + hours × wage + overhead).",
+        "**Step 2**: Apply your target margin (50% = 2× cost for retail).",
+        "**Step 3**: Add 25–30% to cover Etsy fees + shipping shortfall + Ads.",
+        "**Example**: $5 yarn + 4 hrs × $20/hr ($80) + 12% overhead ($10) = $95 cost. 50% margin = $190 retail. Etsy adjustment +28% = $243 listing price.",
+        "$243 is much higher than the $40 beanie that's currently selling. Two responses:",
+        "**Option A**: Accept that your $20/hr crochet hat doesn't fit Etsy's beanie price band. Sell only intricate, premium, or custom items where your math works at Etsy-acceptable prices. Avoid the high-volume, low-margin items.",
+        "**Option B**: Reduce one of the inputs. Speed up so the beanie takes 90 minutes instead of 4 hours. Or accept a lower wage ($10/hr) and call it hobby work. Or use cheaper yarn ($2 instead of $5). Each lowers your final price; pick the trade-off you can live with.",
+      ],
+    },
+    {
+      heading: "When Etsy is and isn't the right channel",
+      paragraphs: [
+        "Etsy works for crochet when:",
+        "- You sell unique, custom, or premium items (commissioned amigurumi, hand-dyed yarn projects, named designer collaborations) where competitors are scarce and pricing premium",
+        "- You're targeting gift-givers (mother's day, baby showers) who'll pay $60–$200 for a meaningful handmade item",
+        "- You batch-produce items and amortize per-listing costs across many sales",
+        "Etsy doesn't work when:",
+        "- You're competing in saturated categories (basic beanies, basic baby blankets, generic plushies) where pricing has been pushed below cost",
+        "- Your items take more than 6–8 hours and you're trying to compete on Etsy's standard price bands",
+        "- You're selling locally-shippable items where direct sales (farmers markets, Instagram, word of mouth) avoid the fee stack",
+        "If Etsy isn't working, the answer is rarely 'try harder on Etsy.' It's switching channels: Instagram + Shopify (no per-sale fees, harder to find customers but better margin), local craft fairs (no fees, immediate cash), or commission-only via referrals.",
+      ],
+    },
+  ],
+  example: {
+    title: "Worked example: a $80 listed crochet shawl on Etsy",
+    rows: [
+      ["Listed price (item)", "$80.00"],
+      ["Customer-paid shipping", "$10.00"],
+      ["Total transaction", "$90.00"],
+      ["Etsy listing fee", "-$0.20"],
+      ["Transaction fee (6.5% × $90)", "-$5.85"],
+      ["Payment processing (3% × $90 + $0.25)", "-$2.95"],
+      ["Etsy Ads (5% × $80)", "-$4.00"],
+      ["Actual shipping cost (priority padded flat-rate)", "-$8.50"],
+      ["Total fees + shipping cost", "-$21.50"],
+      ["Your gross from sale", "$68.50"],
+      ["Materials + 6 hrs labor + overhead (cost)", "-$42.00"],
+      ["Your net profit", "$26.50"],
+      ["Effective hourly rate (across 6 hrs of work + 30 min packing)", "$4.07/hr"],
+    ],
+    footnote:
+      "$26.50 of profit on a $80 sale sounds good until you realize it's $4/hr after fees and shipping. To get to $20/hr effective rate on this same shawl, you'd need to list at ~$160 — possible if you're selling to gift-buyers in higher-COL markets, but a tough sell at the low end of Etsy's casual-shopper price band.",
+  },
+  faq: [
+    {
+      q: "Should I offer free shipping?",
+      a: "Etsy heavily favors free-shipping listings in search results. The trade-off: you have to bake the shipping cost into the item price, which raises your sticker price. For most crochet items under $50, free shipping is worth the search-ranking boost. Above $50, customers expect to pay shipping and the search benefit shrinks.",
+    },
+    {
+      q: "Should I opt into Etsy Ads?",
+      a: "For new shops or low-traffic listings, yes — start with a $1–$3/day budget. For shops with established traffic and reviews, Etsy Ads often have negative ROI. Track spend vs. attributed revenue weekly; turn off ads on listings where the ad spend exceeds 8% of attributed sales.",
+    },
+    {
+      q: "Can I avoid Offsite Ads fees?",
+      a: "If your shop earned under $10,000 in the past 365 days, you can opt out. Above that threshold, Offsite Ads are mandatory. The 15% fee on attributed sales is real and unavoidable — bake it into pricing for high-revenue shops.",
+    },
+    {
+      q: "Is selling on Shopify or Square better than Etsy?",
+      a: "Shopify and Square charge ~3% + $0.30 per transaction with no per-listing fees, no transaction fee, and no Ads tax. Per-sale, you keep 6–10% more vs. Etsy. The trade-off: you have to drive your own traffic. For makers with an Instagram following (5K+), the math favors Shopify; for makers without traffic, Etsy's discoverability is worth the fees.",
+    },
+  ],
+  ctaText: "Calculate your Etsy crochet pricing",
+  ctaHref: "/calc/crochet",
+};
