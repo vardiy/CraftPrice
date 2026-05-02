@@ -3,17 +3,27 @@
 // by importing the module and pushing it into ARTICLES.
 
 import crochetAmigurumi from "./crochet-amigurumi-pricing.js";
+import crochetBlanket from "./crochet-blanket-pricing.js";
 import woodworkingCuttingBoards from "./woodworking-cutting-board-pricing.js";
+import woodworkingShopRate from "./woodworking-shop-rate.js";
 import jewelrySterling from "./jewelry-sterling-silver-pricing.js";
+import jewelryBenchFees from "./jewelry-bench-fees.js";
 import bakingCustomCakes from "./baking-custom-cake-pricing.js";
+import bakingCookies from "./baking-cookie-pricing.js";
 import sewingQuilts from "./sewing-quilt-pricing.js";
+import sewingAlterations from "./sewing-alterations-pricing.js";
 
 export const ARTICLES = [
   crochetAmigurumi,
+  crochetBlanket,
   woodworkingCuttingBoards,
+  woodworkingShopRate,
   jewelrySterling,
+  jewelryBenchFees,
   bakingCustomCakes,
+  bakingCookies,
   sewingQuilts,
+  sewingAlterations,
 ];
 
 export const ARTICLE_BY_SLUG = Object.fromEntries(
