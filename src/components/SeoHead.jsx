@@ -41,14 +41,6 @@ export default function SeoHead({ niche }) {
       <meta name="description" content={description} />
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={canonical} />
-
-      {/* Open Graph */}
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:url" content={canonical} />
-
-      {/* JSON-LD Structured Data */}
       <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
     </Helmet>
   );

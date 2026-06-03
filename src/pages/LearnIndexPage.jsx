@@ -4,6 +4,7 @@ import { Clock, ChevronRight } from "lucide-react";
 import { ARTICLES } from "../content/articles";
 import { NICHES } from "../config/nicheConfig";
 import { useAnalytics } from "../hooks/useAnalytics";
+import PinterestMeta from "../components/PinterestMeta";
 
 const SITE_ORIGIN = "https://makermarginsapp.com";
 const PAGE_TITLE = "Pricing Guides for Makers — Real Numbers, Not Guesses | MakerMargins";
@@ -34,12 +35,14 @@ export default function LearnIndexPage() {
         <meta name="description" content={PAGE_DESCRIPTION} />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={`${SITE_ORIGIN}/learn`} />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={PAGE_TITLE} />
-        <meta property="og:description" content={PAGE_DESCRIPTION} />
-        <meta property="og:url" content={`${SITE_ORIGIN}/learn`} />
         <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
       </Helmet>
+      <PinterestMeta
+        title={PAGE_TITLE}
+        description={PAGE_DESCRIPTION}
+        path="/learn"
+        image="/assets/pins/home-preview.png"
+      />
 
       <nav aria-label="Breadcrumb" className="mb-6">
         <ol className="flex flex-wrap items-center gap-1 text-sm text-slate-500">

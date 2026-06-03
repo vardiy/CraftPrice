@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ArrowDown, ChevronDown, Package, Clock, Building2, TrendingUp, DollarSign, Receipt } from "lucide-react";
 import SeoHead from "../components/SeoHead";
+import PinterestMeta from "../components/PinterestMeta";
 import { NICHES } from "../config/nicheConfig";
+
+const LANDING_PIN_TITLE = "Free Pricing Calculator for Makers — Stop Underpricing Your Craft";
+const LANDING_PIN_DESCRIPTION =
+  "Calculate the real price of your handmade goods in seconds. Materials, labor, overhead, retail + wholesale — all free.";
 
 const niches = Object.values(NICHES);
 
@@ -68,6 +73,12 @@ export default function LandingPage() {
   return (
     <>
       <SeoHead />
+      <PinterestMeta
+        title={LANDING_PIN_TITLE}
+        description={LANDING_PIN_DESCRIPTION}
+        path="/"
+        image="/assets/pins/home-preview.png"
+      />
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
       </Helmet>

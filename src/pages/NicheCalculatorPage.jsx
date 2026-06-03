@@ -36,7 +36,9 @@ export default function NicheCalculatorPage() {
       <PinterestMeta
         title={niche.metaTitle}
         description={niche.metaDescription}
-        nicheName={niche.name}
+        path={`/calc/${niche.slug}`}
+        image={`/assets/pins/${niche.slug}.png`}
+        nicheSlug={niche.slug}
       />
       {faqJsonLd && (
         <Helmet>

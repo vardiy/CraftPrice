@@ -9,27 +9,38 @@ const PIN_SVG = (
   </svg>
 );
 
-export default function ShareToPinterest({ nicheSlug, description }) {
+export default function ShareToPinterest({
+  nicheSlug,
+  description,
+  pageUrl,
+  imageUrl,
+  variant = "filled",
+  label = "Save to Pinterest",
+  onClick,
+}) {
   const origin = typeof window !== "undefined" ? window.location.origin : "https://makermarginsapp.com";
-  const pageUrl = nicheSlug
-    ? `${origin}/calc/${nicheSlug}`
-    : `${origin}/`;
-  const imageUrl = nicheSlug
-    ? `${origin}/assets/pins/${nicheSlug}.png`
-    : `${origin}/assets/pins/home-preview.png`;
+  const resolvedPageUrl = pageUrl ?? (nicheSlug ? `${origin}/calc/${nicheSlug}` : `${origin}/`);
+  const resolvedImage = imageUrl ?? (nicheSlug ? `${origin}/assets/pins/${nicheSlug}.png` : `${origin}/assets/pins/home-preview.png`);
 
-  const pinUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(pageUrl)}&media=${encodeURIComponent(imageUrl)}&description=${encodeURIComponent(description || "")}`;
+  const pinUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(resolvedPageUrl)}&media=${encodeURIComponent(resolvedImage)}&description=${encodeURIComponent(description || "")}`;
+
+  const classes =
+    variant === "outline"
+      ? "flex w-full min-h-[44px] items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-slate-400 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+      : "flex w-full min-h-[44px] items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600";
 
   return (
     <a
       href={pinUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Save this calculation to Pinterest"
-      className="flex w-full min-h-[44px] items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+      aria-label={label}
+      data-pin-do="none"
+      onClick={onClick}
+      className={classes}
     >
       {PIN_SVG}
-      Save to Pinterest
+      {label}
     </a>
   );
 }

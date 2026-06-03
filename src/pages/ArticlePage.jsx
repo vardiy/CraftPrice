@@ -4,8 +4,14 @@ import { Clock, ArrowRight, ChevronRight } from "lucide-react";
 import { getArticle, getArticlesByNiche } from "../content/articles";
 import { getNiche } from "../config/nicheConfig";
 import { useAnalytics } from "../hooks/useAnalytics";
+import PinterestMeta from "../components/PinterestMeta";
+import ShareToPinterest from "../components/ShareToPinterest";
 
 const SITE_ORIGIN = "https://makermarginsapp.com";
+
+function pinImageFor(article) {
+  return article.pinImage || `/assets/pins/${article.niche}.png`;
+}
 
 export default function ArticlePage() {
   const { slug } = useParams();
@@ -57,19 +63,20 @@ export default function ArticlePage() {
         <meta name="description" content={article.metaDescription} />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={article.metaTitle} />
-        <meta property="og:description" content={article.metaDescription} />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={article.metaTitle} />
-        <meta name="twitter:description" content={article.metaDescription} />
         <script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
         {faqJsonLd && (
           <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
         )}
       </Helmet>
+      <PinterestMeta
+        title={article.metaTitle}
+        description={article.metaDescription}
+        path={`/learn/${article.slug}`}
+        image={pinImageFor(article)}
+        nicheSlug={article.niche}
+        includeArticleJsonLd={false}
+      />
 
       <article>
         <nav aria-label="Breadcrumb" className="mb-6">
@@ -184,14 +191,25 @@ export default function ArticlePage() {
             <p className="mt-2 text-sm text-blue-100">
               Plug in your own materials, hours, and overhead — get retail and wholesale prices instantly.
             </p>
-            <Link
-              to={article.ctaHref}
-              onClick={() => trackEvent("article_cta_click", { article: article.slug, niche: article.niche })}
-              className="mt-4 inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              Open the calculator
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+              <Link
+                to={article.ctaHref}
+                onClick={() => trackEvent("article_cta_click", { article: article.slug, niche: article.niche })}
+                className="inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 text-sm font-semibold text-blue-700 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                Open the calculator
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+              <div className="sm:flex-1">
+                <ShareToPinterest
+                  pageUrl={canonicalUrl}
+                  imageUrl={`${SITE_ORIGIN}${pinImageFor(article)}`}
+                  description={article.metaDescription}
+                  label="Save this guide"
+                  onClick={() => trackEvent("article_pin_save", { article: article.slug, niche: article.niche })}
+                />
+              </div>
+            </div>
           </div>
         )}
 
