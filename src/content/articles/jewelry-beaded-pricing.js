@@ -4,7 +4,7 @@ export default {
   title: "How to Price Beaded Jewelry (Real Bead-Cost and Time Math)",
   metaTitle: "How to Price Beaded Jewelry (2026 Pricing Guide) | MakerMargins",
   metaDescription:
-    "Real pricing math for beaded jewelry: bead cost per piece, stringing time, finishing premium, and pricing tiers from simple bracelets to multi-strand necklaces.",
+    "Beaded necklaces retail $80–$400+: knotted pearl ~$260, multi-strand seed bead ~$408. Bead cost, stringing time, and price tiers for handmade pieces.",
   publishDate: "2026-05-02",
   lastUpdated: "2026-05-02",
   readingMinutes: 8,

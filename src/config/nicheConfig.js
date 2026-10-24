@@ -4,8 +4,8 @@ export const NICHES = {
   crochet: {
     slug: "crochet",
     name: "Crochet",
-    h1: "Crochet Profit Calculator",
-    metaTitle: "MakerMargins | Crochet Profit Calculator",
+    h1: "Crochet Pricing Calculator",
+    metaTitle: "Crochet Pricing Calculator: How Much to Charge (Free) | MakerMargins",
     metaDescription:
       "Calculate the true cost of your crochet projects. Track yarn, hooks, and notions, add labor time, and find the perfect retail and wholesale price.",
     defaultHourlyWage: 15,
@@ -16,8 +16,8 @@ export const NICHES = {
   woodworking: {
     slug: "woodworking",
     name: "Woodworking",
-    h1: "Woodworking Profit Calculator",
-    metaTitle: "MakerMargins | Woodworking Profit Calculator",
+    h1: "Woodworking Pricing Calculator",
+    metaTitle: "Woodworking Pricing Calculator: Price Your Builds (Free) | MakerMargins",
     metaDescription:
       "Price your woodworking projects accurately. Track lumber, hardware, and finish costs, factor in shop time, and set profitable retail and wholesale prices.",
     defaultHourlyWage: 25,
@@ -28,8 +28,8 @@ export const NICHES = {
   jewelry: {
     slug: "jewelry",
     name: "Jewelry",
-    h1: "Jewelry Profit Calculator",
-    metaTitle: "MakerMargins | Jewelry Profit Calculator",
+    h1: "Jewelry Pricing Calculator",
+    metaTitle: "Jewelry Pricing Calculator: Price Handmade Jewelry (Free) | MakerMargins",
     metaDescription:
       "Price handmade jewelry for profit. Track beads, wire, and findings, add bench time, and calculate retail and wholesale prices instantly.",
     defaultHourlyWage: 20,
@@ -40,8 +40,8 @@ export const NICHES = {
   baking: {
     slug: "baking",
     name: "Baking",
-    h1: "Baking Profit Calculator",
-    metaTitle: "MakerMargins | Baking Profit Calculator",
+    h1: "Baking Pricing Calculator",
+    metaTitle: "Baking Pricing Calculator: Price Cakes & Cookies (Free) | MakerMargins",
     metaDescription:
       "Find the right price for your baked goods. Track ingredients and packaging costs, add prep and bake time, and calculate profitable selling prices.",
     defaultHourlyWage: 18,
@@ -52,8 +52,8 @@ export const NICHES = {
   sewing: {
     slug: "sewing",
     name: "Sewing",
-    h1: "Sewing Profit Calculator",
-    metaTitle: "MakerMargins | Sewing Profit Calculator",
+    h1: "Sewing Pricing Calculator",
+    metaTitle: "Sewing Pricing Calculator: Price Quilts & Garments (Free) | MakerMargins",
     metaDescription:
       "Calculate sewing project costs and pricing. Track fabric, thread, and notions, factor in cutting and sewing time, and set retail and wholesale prices.",
     defaultHourlyWage: 20,

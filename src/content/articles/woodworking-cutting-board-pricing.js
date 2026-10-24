@@ -4,7 +4,7 @@ export default {
   title: "How to Price Custom Cutting Boards (Real Lumber Costs + Labor Math)",
   metaTitle: "How to Price Custom Cutting Boards | MakerMargins Pricing Guide",
   metaDescription:
-    "Stop pricing cutting boards by board-foot of finished product. Real lumber waste factors, finish costs, shop-time math, and pricing tiers for end-grain, edge-grain, and live-edge.",
+    "Edge-grain boards sell for $90–$180, end-grain $200–$400, live-edge $300–$700. Lumber waste, finish, and shop-time math to price yours.",
   publishDate: "2026-05-02",
   lastUpdated: "2026-05-02",
   readingMinutes: 9,

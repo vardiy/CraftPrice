@@ -4,7 +4,7 @@ export default {
   title: "How to Price Decorated Cookies (Per Cookie and Per Dozen)",
   metaTitle: "How to Price Decorated Cookies Per Dozen | MakerMargins",
   metaDescription:
-    "Real cost math for decorated sugar cookies, royal-icing designs, and custom cookies. Per-cookie pricing tiers and what to charge per dozen for events.",
+    "Decorated cookies: $18–$30/dozen plain, $60–$96 multi-color flood, $120–$300 hand-piped. Per-cookie cost math and how to quote event orders.",
   publishDate: "2026-05-02",
   lastUpdated: "2026-05-02",
   readingMinutes: 8,

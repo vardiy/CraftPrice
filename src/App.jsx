@@ -8,6 +8,7 @@ import NicheCalculatorPage from "./pages/NicheCalculatorPage";
 import LearnIndexPage from "./pages/LearnIndexPage";
 import ArticlePage from "./pages/ArticlePage";
 import { SettingsProvider, useSettings } from "./context/SettingsContext";
+import { NICHES } from "./config/nicheConfig";
 import { initAnalytics, trackPageView } from "./hooks/useAnalytics";
 
 function PageTracker() {
@@ -58,7 +59,17 @@ function Shell() {
         <Outlet />
       </main>
 
-      <footer className="border-t border-slate-200 bg-white py-4 text-center text-sm text-slate-500">
+      <footer className="border-t border-slate-200 bg-white py-6 text-center text-sm text-slate-500">
+        <nav aria-label="Footer" className="mx-auto mb-3 flex max-w-5xl flex-wrap justify-center gap-x-4 gap-y-2 px-4">
+          {Object.values(NICHES).map((n) => (
+            <Link key={n.slug} to={`/calc/${n.slug}`} className="hover:text-slate-900 hover:underline">
+              {n.name} Pricing Calculator
+            </Link>
+          ))}
+          <Link to="/learn" className="hover:text-slate-900 hover:underline">
+            Pricing Guides
+          </Link>
+        </nav>
         <p>&copy; {new Date().getFullYear()} MakerMargins. Built for makers.</p>
       </footer>
 

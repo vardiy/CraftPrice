@@ -1,7 +1,6 @@
 import { useReducer, useEffect, useCallback, useId, useMemo, useRef } from "react";
 import { Plus, Trash2, FileDown, Table, Info } from "lucide-react";
 import ResultCard from "./ResultCard";
-import AdSlot from "./AdSlot";
 import { useSettings } from "../context/SettingsContext";
 import { useAnalytics } from "../hooks/useAnalytics";
 import { exportPdf } from "../utils/exportPdf";
@@ -316,9 +315,6 @@ export default function Calculator({ nicheConfig }) {
             />
           </div>
         </section>
-
-        {/* Ad slot above calculate area */}
-        <AdSlot slot="1234567890" />
       </div>
 
       {/* ---- Right Column: Results ---- */}
@@ -330,9 +326,6 @@ export default function Calculator({ nicheConfig }) {
           profitMargin={num(state.profitMargin)}
           nicheConfig={nicheConfig}
         />
-
-        {/* Ad slot below results */}
-        <AdSlot slot="0987654321" />
 
         <button
           type="button"

@@ -19,7 +19,15 @@ function pushConsent(value) {
   }
 }
 
-// Set default consent to denied before GA loads
+// Regions that require opt-in consent (EEA + UK + Switzerland). Google
+// resolves the visitor's region by IP and the most specific default wins.
+const CONSENT_REGIONS = [
+  "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR",
+  "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK",
+  "SI", "ES", "SE", "IS", "LI", "NO", "GB", "CH",
+];
+
+// Set default consent before GA loads: denied in consent regions, granted elsewhere
 if (typeof window !== "undefined" && typeof window.gtag !== "function") {
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () {
@@ -27,7 +35,32 @@ if (typeof window !== "undefined" && typeof window.gtag !== "function") {
   };
   window.gtag("consent", "default", {
     analytics_storage: "denied",
+    region: CONSENT_REGIONS,
   });
+  window.gtag("consent", "default", {
+    analytics_storage: "granted",
+  });
+}
+
+// The banner can't see the IP-based region, so approximate it with the
+// browser time zone. Errs toward showing it (e.g. all of Europe/*).
+const CONSENT_TIMEZONE_PREFIXES = [
+  "Europe/",
+  "Atlantic/Canary",
+  "Atlantic/Madeira",
+  "Atlantic/Azores",
+  "Atlantic/Reykjavik",
+  "Atlantic/Faroe",
+  "Arctic/Longyearbyen",
+];
+
+function inConsentRegion() {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone ?? "";
+    return CONSENT_TIMEZONE_PREFIXES.some((p) => tz.startsWith(p));
+  } catch {
+    return true;
+  }
 }
 
 // --- Initialization ----------------------------------------------------
@@ -64,6 +97,10 @@ export function declineConsent() {
 
 export function hasRespondedToConsent() {
   return getConsent() !== null;
+}
+
+export function shouldShowConsentBanner() {
+  return inConsentRegion() && !hasRespondedToConsent();
 }
 
 // --- Page tracking -----------------------------------------------------

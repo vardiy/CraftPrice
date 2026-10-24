@@ -4,7 +4,7 @@ export default {
   title: "How to Price Custom Cakes (Tier-by-Tier Pricing for Home Bakers)",
   metaTitle: "How to Price Custom Cakes (2026 Pricing Guide) | MakerMargins",
   metaDescription:
-    "Real pricing math for custom cakes: ingredient costs, decorating time, kitchen overhead, and per-tier pricing for buttercream, fondant, and tiered designs.",
+    "Custom cakes: $196 for an 8\" buttercream tier, $456 for a two-tier wedding cake at $22/hr. Per-tier pricing for buttercream, fondant, and tiered designs.",
   publishDate: "2026-05-02",
   lastUpdated: "2026-05-02",
   readingMinutes: 8,

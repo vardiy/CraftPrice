@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
 const GENERIC = {
-  title: "MakerMargins | Crochet & Craft Profit Calculator",
+  title: "Free Pricing Calculator for Handmade Sellers | MakerMargins",
   description:
     "Free pricing calculator for makers. Track materials, labor, and overhead to find your perfect retail and wholesale prices. Export results as PDF.",
   canonical: "https://makermarginsapp.com/",

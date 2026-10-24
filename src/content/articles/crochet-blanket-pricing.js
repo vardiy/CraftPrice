@@ -4,7 +4,7 @@ export default {
   title: "How Much to Charge for a Crochet Blanket (Baby, Throw, Queen)",
   metaTitle: "How Much to Charge for a Crochet Blanket | MakerMargins",
   metaDescription:
-    "Real cost math for crochet blankets across baby, lap, throw, and queen sizes. Yarn yardage, hours, and what to actually charge in 2026.",
+    "A crochet baby blanket costs ~$155 to make at $20/hr and should retail around $310. Yarn, hours, and price tiers for baby, lap, throw, and queen sizes.",
   publishDate: "2026-05-02",
   lastUpdated: "2026-05-02",
   readingMinutes: 8,

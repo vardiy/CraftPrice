@@ -6,8 +6,8 @@ export default function ResultCard({ totalCost, retailPrice, wholesalePrice, pro
   const { formatPrice } = useSettings();
 
   const pinDescription = nicheConfig
-    ? `${nicheConfig.name} Profit Calculator \u2014 find your perfect retail and wholesale prices with MakerMargins`
-    : "Craft Profit Calculator \u2014 find your perfect retail and wholesale prices with MakerMargins";
+    ? `${nicheConfig.name} Pricing Calculator \u2014 find your perfect retail and wholesale prices with MakerMargins`
+    : "Craft Pricing Calculator \u2014 find your perfect retail and wholesale prices with MakerMargins";
 
   return (
     <section aria-label="Pricing results" className="rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 p-6 text-white shadow-lg">

@@ -4,7 +4,7 @@ export default {
   title: "How Much to Charge for a Handmade Quilt (Real Numbers by Size)",
   metaTitle: "How Much to Charge for a Handmade Quilt | MakerMargins Pricing Guide",
   metaDescription:
-    "Real pricing math for handmade quilts: fabric costs, hand vs machine quilting hours, batting choice, and per-size pricing tiers from baby quilts to king-size.",
+    "A handmade throw quilt costs ~$880 to make at $25/hr; the market pays $200–$600. Fabric, batting, and labor math from baby to king-size quilts.",
   publishDate: "2026-05-02",
   lastUpdated: "2026-05-02",
   readingMinutes: 9,
