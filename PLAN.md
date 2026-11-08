@@ -78,6 +78,7 @@ Bing and its partners (DDG, Yahoo) send far more traffic than Google, and Bing d
 - [ ] Make calculator pages more distinct from each other (unique worked examples per product type, price
       tables), which is likely why they're "crawled, not indexed".
 - [x] Footer links to every calculator and `/learn` on all pages.
+- [x] In-article **Quick price check** after each article's intro (materials + hours + wage → retail/wholesale, links to the full calculator). 2026-11-08.
 - [ ] More internal links: homepage → each article.
 - [ ] Long-tail queries: "cost to tailor a shirt" (position 87) is consumer intent and the alterations article is written
       for sellers, so it's probably not worth chasing. The beaded-necklace cost query (position 16) is a better fit.

@@ -6,6 +6,7 @@ import { getNiche } from "../config/nicheConfig";
 import { useAnalytics } from "../hooks/useAnalytics";
 import PinterestMeta from "../components/PinterestMeta";
 import ShareToPinterest from "../components/ShareToPinterest";
+import QuickEstimate from "../components/QuickEstimate";
 
 const SITE_ORIGIN = "https://makermarginsapp.com";
 
@@ -125,6 +126,8 @@ export default function ArticlePage() {
             ))}
           </div>
         )}
+
+        {niche && <QuickEstimate niche={niche} article={article} />}
 
         {article.sections.map((section, i) => (
           <section key={i} className="mb-10">

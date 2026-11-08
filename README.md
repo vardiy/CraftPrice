@@ -91,7 +91,10 @@ Hourly wage and margin persist in localStorage (`cp_hourlyWage`, `cp_profitMargi
 GA4 property `G-7409PQ6GLE`. Enhanced Measurement is on (scroll, outbound clicks, downloads).
 Page views are sent manually by `PageTracker` on each route change.
 
-Custom events: `calculate`, `pdf_download`, `csv_download`, `article_cta_click`,
+Key events: `calculate`, `pdf_download`, `csv_download`. `calculate` carries `source: "article_quick"` when it comes
+from the in-article Quick price check (`QuickEstimate.jsx`) rather than the full calculator.
+
+Custom events: `calculate`, `pdf_download`, `csv_download`, `article_cta_click`, `article_quick_cta_click`,
 `article_niche_tag_click`, `related_article_click`, `niche_to_article_click`,
 `niche_to_niche_click`, `learn_index_article_click`, `learn_index_calc_click`.
 
