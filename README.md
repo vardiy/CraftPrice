@@ -26,9 +26,11 @@ npm run dev        # Vite dev server (client-only, no SSG)
 npm run build      # vite-react-ssg build -> dist/ (one .html per route)
 npm run preview    # serve dist/
 npm run lint
+npm run indexnow   # after a deploy is live: submit sitemap URLs to Bing/IndexNow
+                   # (or pass paths: npm run indexnow -- /calc/crochet)
 ```
 
-Pushing to `main` deploys through Vercel.
+Pushing to `main` deploys through Vercel. The IndexNow key file is `public/<key>.txt`; the key also lives in `scripts/indexnow.mjs`.
 
 ## Routes
 

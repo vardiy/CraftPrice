@@ -33,7 +33,21 @@ alterations 119 (59.7), custom-cake 91 (11.0), cutting-board 73 (7.3), beaded 63
 Queries are long-tail "how much does X cost" questions ("average cost of custom beaded necklaces",
 "cost to tailor a shirt", "bulk discounts for decorated cookies by the dozen") plus brand searches.
 
-### What the data says
+### Check-in 2026-11-08 (last 28 days, Oct 11 – Nov 7)
+
+| Source | Numbers |
+|---|---|
+| GA4 | 66 sessions, 40 users, 86 page views (vs 36 sessions in the previous 7 months). Most of it arrived after Oct 26 |
+| GA4 sources | bing 33, direct 15, duckduckgo 11, yahoo 3, facebook 2, google 2 |
+| GA4 top pages | cutting-board article 20 views, `/calc/woodworking` 13, `/` 9, sterling-silver article 9, crochet-blanket article 7 |
+| GA4 events | `calculate` 4 (1 was our setup test), `article_cta_click` 4, `related_article_click` 7 |
+| Search Console | 2 clicks, 291 impressions, 0.7% CTR, avg position 10.5 |
+| GSC pages | All 5 `/calc/*` pages now get impressions (baking 56, crochet 33, woodworking 26, sewing 17, jewelry 15); home 137 |
+| Indexing report | Still shows 5 indexed / 20 not; its data lags (last point ~Oct 18) |
+
+Bing and its partners (DDG, Yahoo) send far more traffic than Google, and Bing doesn't use our Search Console work.
+
+### What the data says (Oct 23)
 
 1. **The bottleneck is indexing, not ranking.** Google found the pages but kept 80% out of the index.
    Indexed articles already sit around position 7–12. Each one that gets indexed and reaches page 1 counts.
@@ -49,7 +63,8 @@ Queries are long-tail "how much does X cost" questions ("average cost of custom 
 - [x] **Region-scoped consent**: default `analytics_storage: denied` only for EEA/UK/CH
       (`region: [...]` in the `consent default` call), granted elsewhere. Banner shows only for Europe time zones.
 - [ ] Add a GA4 internal-traffic filter (or exclude our IP) so testing stops polluting Direct.
-- [ ] Mark `calculate`, `pdf_download`, `csv_download` as **key events** in GA4.
+- [x] Mark `calculate`, `pdf_download`, `csv_download` as **key events** in GA4 (2026-11-08).
+- [x] **Bing Webmaster Tools** (imported from GSC, 2026-11-08) + IndexNow (`npm run indexnow` after each content deploy). Bing/DDG/Yahoo bring ~70% of sessions.
 - [x] Bump sitemap `lastmod`. **Still to do (you, after deploy):** resubmit the sitemap in Search Console, and use **URL Inspection → Request indexing**
       on the 5 `/calc/*` pages and `/learn`.
 - [x] Remove `AdSlot` from the calculator until AdSense is approved (component kept for later): the empty grey boxes hurt UX and page-quality signals.
